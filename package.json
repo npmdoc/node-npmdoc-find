@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"find",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "find",
+    "description": "api documentation for [find (v0.2.7)](https://github.com/yuanchuan/find#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-find.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-find) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-find.svg)](https://travis-ci.org/npmdoc/node-npmdoc-find)",
     "devDependencies": {
-        "find": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "find": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-find",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-find",
+    "keywords": [
+        "documentation",
+        "find"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_find.js",
+    "name": "npmdoc-find",
+    "nameAlias": "npmdoc_find",
+    "nameOriginal": "npmdoc-find",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-find"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
